@@ -13,6 +13,11 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/tasks/count", (req, res) => {
+  const count = taskStore.listTasks().length;
+  res.json({ count });
+});
+
 app.post("/tasks", (req, res) => {
   const { errors, value } = validateNewTask(req.body);
 
